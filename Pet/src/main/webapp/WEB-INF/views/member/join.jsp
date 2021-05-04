@@ -10,40 +10,15 @@
 <link href='<c:url value="/resources/css/subpage.css" />' rel="stylesheet" type="text/css">
 
 <script defer src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src='<c:url value="/resources/script/jquery-3.5.1.js" />'></script>
 <script defer src='<c:url value="/resources/script/postcode.js" />'></script>
-<script defer src='<c:url value="/resources/script/member/passCheck.js" />'></script>
 <script defer src='<c:url value="/resources/script/member/password.js" />'></script>
+<script defer src='<c:url value="/resources/script/member/dupcheck.js" />'></script>
+<script defer src='<c:url value="/resources/script/member/idcheck.js" />'></script>
+<script defer src='<c:url value="/resources/script/member/nickcheck.js" />'></script>
+<script defer src='<c:url value="/resources/script/member/email.js" />'></script>
+<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
-<!-- <script defer src="../script/passcheck.js"></script> -->
-<!-- <script defer src="../script/idcheck.js"></script> -->
-<!-- <script defer src="../script/selectbox.js"></script> -->
-<!-- <script defer src="../script/nickCheck.js"></script> -->
- <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-  <script type="text/javascript">
- function idDupCheck() {
-	if(document.fr.id.value=="") {
-		document.getElementById('idCheck').style.color='red';
-		document.getElementById('idCheck').textContent='아이디를 입력하세요.';
-		document.fr.id.focus();
-		return;
-	}
-	
-	var idvalue=document.fr.id.value;
-	window.open("idDupCheck.jsp?id="+idvalue,"아이디 중복 확인","width=400,height=300");
-}
- 
- function nickDupCheck() {
-		if(document.fr.nick.value=="") {
-			document.getElementById('nickCheck').style.color='red';
-			document.getElementById('nickCheck').textContent='닉네임 입력하세요.';
-			document.fr.nick.focus();
-			return;
-		}
-		
-		var nickvalue=document.fr.nick.value;
-		window.open("nickDupCheck.jsp?nick="+nickvalue,"닉네임 중복 확인","width=400,height=300");
-	}
- </script>
 </head>
 <body>
 <div id="wrap">
@@ -59,29 +34,29 @@
 <form action="joinPro.jsp" name="fr" id="join" method="post" >
 <fieldset>
 <h3>아이디 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
-<input type="text" name="id" class="id"  id="id" maxlength="20" onkeyup="check3();" required>
-<input type="button" value="중복확인" class="dup" onclick="idDupCheck()"><br>
+<input type="text" name="id" class="id"  id="id" onkeyup="idCheck()" maxlength="20" required>
+<input type="button" value="중복확인" class="iddup"><br>
 <span id="idCheck"></span>
 <h3>비밀번호 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="password" name="pass" id="pass" maxlength="16"
 placeholder="영문 대소문자, 숫자, 특수문자(!,@,#) 중 2가지 이상 포함한 8~16자리" 
-onkeyup="check();check2();" required/><br>
+onkeyup="check()" required/><br>
 <span id="passCheck"></span>
 <h3>비밀번호 확인 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="password" name="confirmPassword" id="confirmPassword" 
-onkeyup='check();' maxlength="16"
+onkeyup='check()' maxlength="16"
 required /><br>
 <span id="message"></span>
 <h3>성함 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="name" maxlength="10" required>
 <h3>닉네임 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
-<input type="text" name="nick" maxlength="10" class="id" id="nick" onkeyup="check4();" required>
-<input type="button" value="중복확인" class="dup" onclick="nickDupCheck()"><br>
+<input type="text" name="nick" maxlength="10" class="id" id="nick" onkeyup="nickCheck()" required>
+<input type="button" value="중복확인" class="nickdup"><br>
 <span id="nickCheck"></span>
 <h3>이메일 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="emailId" class="emailId" id="emailId" required>@
 <input type="text" name="email" class="email" id="email" required>
-<select name="customSelect" id="customSelect" onchange="setSelect();">
+<select name="customSelect" id="customSelect" onchange="emailSelect();">
  <option>직접입력</option>
   <option>naver.com</option>
   <option>gmail.com</option>

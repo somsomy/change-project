@@ -9,6 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where id=#{id} and pass=#{pass}
 	</select>
 
+	<select id="getMember" resultType="com.somsomy.domain.MemberBean">
+		select * from member where id=#{id}
+	</select>
 
-
+	<select id="findByNick" resultType="com.somsomy.domain.MemberBean">
+		select * from member where nick=#{nick}
+	</select>
 </mapper>

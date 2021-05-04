@@ -30,20 +30,13 @@ public class MemberController {
 		
 		if(loginMb != null) {
 			session.setAttribute("id", mb.getId());
-			return "redirect:/main";
+			return "redirect: /main";
 		}else {
 			model.addAttribute("msg", "가입되지 않은 아이디거나 잘못된 비밀번호입니다.");
 			return "member/msg";
 		}
 	}
 	
-	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
-	public String join() {
-		
-		
-		return "member/join";
-	}
-
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
@@ -51,4 +44,10 @@ public class MemberController {
 		return "redirect: /pet/main";
 	}
 
+	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
+	public String join() {
+		
+		
+		return "member/join";
+	}
 }

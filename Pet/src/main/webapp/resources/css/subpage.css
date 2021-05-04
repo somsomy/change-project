@@ -358,13 +358,13 @@ form#join .email {
 form#join .phone {
 	width: 30%;
 }
-form#join input.dup{width: 25%; height: 30px;
+form#join input.iddup, form#join input.nickdup, form#join input.dup{width: 25%; height: 30px;
 padding: 2px;
 border-radius:8px; border: none; font-size: 15px; 
 margin-left: 4px; font-weight: bold;color: #FFF;
 background-color: skyblue;}
 
-form#join input.dup:hover {
+form#join input.iddup:hover, form#join input.nickdup:hover, form#join input.dup:hover{
 	cursor: pointer;
 	background-color: #106de0;
 }
