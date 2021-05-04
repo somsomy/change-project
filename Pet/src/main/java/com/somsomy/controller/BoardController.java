@@ -13,5 +13,9 @@ public class BoardController {
 		return "petcenter/welcome";
 	}
 	
-
+	@RequestMapping(value = "/map", method = RequestMethod.GET)
+	public String map() {
+		
+		return "petcenter/map";
+	}
 }
