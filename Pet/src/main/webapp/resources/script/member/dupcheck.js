@@ -17,6 +17,7 @@
 					} else {
 						rdata = '아이디 사용가능';
 						$('#idCheck').css('color', 'green');
+						$('#id_dup').val('success');
 					}
 						
 					$('#idCheck').html(rdata);
@@ -42,6 +43,8 @@
 					} else {
 						rdata = '닉네임 사용가능';
 						$('#nickCheck').css('color', 'green');
+						$('#nick_dup').val('success');
+						
 					}
 						
 					$('#nickCheck').html(rdata);

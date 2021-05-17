@@ -9,5 +9,7 @@ public interface MemberService {
 	int idCheck(String id);
 	MemberBean findByNick(String nick);
 	int nickCheck(String nick);
+	int passCheck(String pass);
+	void join(MemberBean mb);
 
 }

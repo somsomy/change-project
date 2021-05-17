@@ -16,11 +16,13 @@ function check() {
 		
 			passCheck.style.color = 'green';
 	        passCheck.innerHTML = '안전';
+	        $('#pass_reg').val('success');
 			
 		} else if(check ==2) {
 		
 			passCheck.style.color = 'orange';
 			passCheck.innerHTML = '보통';
+			$('#pass_reg').val('success');
 			
 		} else {
 		
@@ -45,6 +47,7 @@ function check() {
 
 	    message.style.color = 'green';
 	    message.innerHTML = '일치합니다';
+       $('#pass_confirm').val('success');
 
 	  } else {
 

@@ -1,5 +1,6 @@
 package com.somsomy.service;
 
+import java.sql.Timestamp;
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
@@ -75,5 +76,44 @@ public class MemberServiceImpl implements MemberService{
 			
 		return check;
 	}
+	
+	@Override
+	public int passCheck(String pass) {
+		String lengthRegex="[A-Za-z0-9!@#]{8,16}";
+		String engUpperRegex="[A-Z]";
+		String engLowerRegex="[a-z]";
+		String numRegex="[0-9]";
+		String specRegex="[!@#]";
+		
+		int check = 0;
+		
+		if(Pattern.matches(lengthRegex, pass)) {
+			check += Pattern.compile(engUpperRegex).matcher(pass).find() ? 1 : 0;
+			check += Pattern.compile(engLowerRegex).matcher(pass).find() ? 1 : 0;
+			check += Pattern.compile(numRegex).matcher(pass).find() ? 1 : 0;
+			check += Pattern.compile(specRegex).matcher(pass).find() ? 1 : 0;
+			
+		} else {
+			check = 0;
+		}
+			
+		return check;
+	}
+
+	@Override
+	public void join(MemberBean mb) {
+		String email = mb.getEmailId() + "@" + mb.getEmail();
+		String phone = mb.getPhone1() + mb.getPhone2() + mb.getPhone3();
+		String address = mb.getAddress();
+		
+		mb.setEmail(email);
+		mb.setPhone(phone);
+		mb.setAddress(address);
+		mb.setDate(new Timestamp(System.currentTimeMillis()));
+		
+		memberDAO.join(mb);
+	}
+
+
 
 }

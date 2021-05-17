@@ -47,7 +47,12 @@ public class MemberController {
 	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
 	public String join() {
 		
-		
 		return "member/join";
+	}
+	
+	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
+	public String joinPost(MemberBean mb) {
+		memberService.join(mb);
+		return "redirect: /pet/member/login";
 	}
 }

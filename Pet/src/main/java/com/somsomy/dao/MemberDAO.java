@@ -6,5 +6,5 @@ public interface MemberDAO {
 	MemberBean userCheck(MemberBean mb);
 	MemberBean getMember(String id);
 	MemberBean findByNick(String nick);
-
+	void join(MemberBean mb);
 }

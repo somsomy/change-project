@@ -17,6 +17,7 @@
 <script defer src='<c:url value="/resources/script/member/idcheck.js" />'></script>
 <script defer src='<c:url value="/resources/script/member/nickcheck.js" />'></script>
 <script defer src='<c:url value="/resources/script/member/email.js" />'></script>
+<script defer src='<c:url value="/resources/script/member/join.js" />'></script>
 <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
 </head>
@@ -31,27 +32,29 @@
 <article id="joinArticle">
 <h1>회원가입</h1>
 <hr>
-<form action="joinPro.jsp" name="fr" id="join" method="post" >
+<form action='<c:url value="/member/join" />'  name="fr" id="join" method="post" >
 <fieldset>
 <h3>아이디 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="id" class="id"  id="id" onkeyup="idCheck()" maxlength="20" required>
 <input type="button" value="중복확인" class="iddup"><br>
+<input type="hidden" id="id_dup" value="fail">
 <span id="idCheck"></span>
 <h3>비밀번호 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="password" name="pass" id="pass" maxlength="16"
 placeholder="영문 대소문자, 숫자, 특수문자(!,@,#) 중 2가지 이상 포함한 8~16자리" 
 onkeyup="check()" required/><br>
+<input type="hidden" id="pass_reg" value="fail">
 <span id="passCheck"></span>
 <h3>비밀번호 확인 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
-<input type="password" name="confirmPassword" id="confirmPassword" 
-onkeyup='check()' maxlength="16"
-required /><br>
+<input type="password" name="confirmPassword" id="confirmPassword" onkeyup='check()' maxlength="16" required /><br>
+<input type="hidden" id="pass_confirm" value="fail">
 <span id="message"></span>
 <h3>성함 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="name" maxlength="10" required>
 <h3>닉네임 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="nick" maxlength="10" class="id" id="nick" onkeyup="nickCheck()" required>
 <input type="button" value="중복확인" class="nickdup"><br>
+<input type="hidden" id="nick_dup" value="fail">
 <span id="nickCheck"></span>
 <h3>이메일 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="emailId" class="emailId" id="emailId" required>@

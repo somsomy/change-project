@@ -14,7 +14,6 @@ public class MemberBean {
 	private String phone2;
 	private String phone3;
 	private String postCode;
-	private String extraAddress;
 	private String address;
 	private String detailAddress;
 	private Timestamp date;

@@ -29,4 +29,9 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne(namespace + ".findByNick", nick);
 	}
 
+	@Override
+	public void join(MemberBean mb) {
+		sqlSession.insert(namespace + ".join", mb);
+	}
+
 }

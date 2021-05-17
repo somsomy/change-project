@@ -24,9 +24,9 @@ public class AjaxController {
 		String result = "";
 		String id = request.getParameter("id");
 		int check = memberService.idCheck(id);
+		MemberBean mb = memberService.getMember(id);
 		
 		try {
-			MemberBean mb = memberService.getMember(id);
 			if(mb != null) {
 				result = "iddup";
 			}else {
@@ -47,9 +47,9 @@ public class AjaxController {
 		String result = "";
 		String nick = request.getParameter("nick");
 		int check = memberService.nickCheck(nick);
+		MemberBean mb = memberService.findByNick(nick);
 		
 		try {
-			MemberBean mb = memberService.findByNick(nick);
 			if(mb != null) {
 				result = "nickdup";
 			}else {

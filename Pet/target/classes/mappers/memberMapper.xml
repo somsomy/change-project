@@ -16,4 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findByNick" resultType="com.somsomy.domain.MemberBean">
 		select * from member where nick=#{nick}
 	</select>
+	
+	<insert id="join">
+		insert into member
+		values(#{id},#{pass},#{name},#{nick},#{email},#{phone},#{postCode},#{address},#{detailAddress},#{date}) 
+	</insert>
 </mapper>
