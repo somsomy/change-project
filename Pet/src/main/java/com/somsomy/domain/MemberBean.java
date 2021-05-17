@@ -84,12 +84,6 @@ public class MemberBean {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
-	public String getExtraAddress() {
-		return extraAddress;
-	}
-	public void setExtraAddress(String extraAddress) {
-		this.extraAddress = extraAddress;
-	}
 	public String getAddress() {
 		return address;
 	}
