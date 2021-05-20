@@ -54,7 +54,7 @@ public class AdminController {
 		
 		adminService.writeNotice(nb);
 		
-		return "redirect: notice";
+		return "redirect:/notice";
 	}
 	
 	@RequestMapping(value = "/notice/content", method = RequestMethod.GET)
@@ -74,9 +74,7 @@ public class AdminController {
 	@RequestMapping(value = "/notice/delete", method = RequestMethod.GET)
 	public String noticeDelete(HttpServletRequest request) {
 		
-		
-		
-		return "redirect: notice";
+		return "redirect:/notice";
 	}
 	
 }

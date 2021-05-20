@@ -28,7 +28,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public void qnaWrite(QnaBean qb) {
+	public void writeQna(QnaBean qb) {
 		
 		qb.setDate(new Timestamp(System.currentTimeMillis()));
 		qb.setState("답변대기");
@@ -44,7 +44,7 @@ public class QnaServiceImpl implements QnaService {
 			qb.setRe_ref(qnaDAO.getMaxNum() + 1);
 		}
 		
-		qnaDAO.qnaWrtie(qb);
+		qnaDAO.writeQna(qb);
 	}
 
 	@Override
@@ -60,6 +60,25 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public void updateQna(QnaBean qb) {
 		qnaDAO.updateQna(qb);
+	}
+
+	@Override
+	public void deleteQna(int num) {
+		qnaDAO.deleteQna(num);
+	}
+
+	@Override
+	public void reWriteQna(QnaBean qb) {
+		qnaDAO.updateReseq(qb);
+		qnaDAO.updateState(qb.getNum());
+		
+		qb.setDate(new Timestamp(System.currentTimeMillis()));
+		qb.setReadcount(0);
+		qb.setNum(qnaDAO.getMaxNum()+1);
+		qb.setRe_lev(qb.getRe_lev()+1);
+		qb.setRe_seq(qb.getRe_seq()+1);
+		
+		qnaDAO.writeQna(qb);
 	}
 
 }

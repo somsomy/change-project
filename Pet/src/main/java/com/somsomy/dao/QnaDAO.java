@@ -10,9 +10,12 @@ public interface QnaDAO {
 	Integer getQnaCount();
 	List<QnaBean> getQnaList(PageBean pb);
 	Integer getMaxNum();
-	void qnaWrtie(QnaBean qb);
+	void writeQna(QnaBean qb);
 	void updateReadcount(int num);
 	QnaBean getQna(int num);
 	void updateQna(QnaBean qb);
+	void deleteQna(int num);
+	void updateReseq(QnaBean qb);
+	void updateState(int num);
 
 }

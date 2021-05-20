@@ -30,7 +30,7 @@ public class MemberController {
 		
 		if(loginMb != null) {
 			session.setAttribute("id", mb.getId());
-			return "redirect: main";
+			return "redirect:/main";
 		}else {
 			model.addAttribute("msg", "가입되지 않은 아이디거나 잘못된 비밀번호입니다.");
 			return "member/msg";
@@ -53,6 +53,6 @@ public class MemberController {
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPost(MemberBean mb) {
 		memberService.join(mb);
-		return "redirect: login";
+		return "redirect:/login";
 	}
 }

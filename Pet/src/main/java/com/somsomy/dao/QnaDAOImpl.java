@@ -33,7 +33,7 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 
 	@Override
-	public void qnaWrtie(QnaBean qb) {
+	public void writeQna(QnaBean qb) {
 		sqlSession.insert(namespace + ".qnaWrite", qb);
 	}
 
@@ -50,6 +50,21 @@ public class QnaDAOImpl implements QnaDAO {
 	@Override
 	public void updateQna(QnaBean qb) {
 		sqlSession.update(namespace + ".updateQna", qb);
+	}
+
+	@Override
+	public void deleteQna(int num) {
+		sqlSession.delete(namespace + ".deleteQna", num);
+	}
+
+	@Override
+	public void updateReseq(QnaBean qb) {
+		sqlSession.update(namespace + ".updateReseq", qb);
+	}
+
+	@Override
+	public void updateState(int num) {
+		sqlSession.update(namespace + ".updateState", num);
 	}
 
 

@@ -62,9 +62,9 @@ public class QnaController {
 	@RequestMapping(value = "/qna/write", method = RequestMethod.POST)
 	public String qnaWritePost(QnaBean qb, Model model) {
 
-		qnaService.qnaWrite(qb);
+		qnaService.writeQna(qb);
 		
-		return "redirect: /pet/qna";
+		return "redirect:/qna";
 	}
 	
 	@RequestMapping(value = "/qna/content", method = RequestMethod.GET)
@@ -91,7 +91,7 @@ public class QnaController {
 		
 		qnaService.updateQna(qb);
 		
-		return "redirect: /pet/qna";
+		return "redirect:/qna";
 	}
 	
 	@RequestMapping(value = "/qna/update", method = RequestMethod.GET)
@@ -104,8 +104,31 @@ public class QnaController {
 		return "qna/qnaUpdate";
 	}
 	
+	@RequestMapping(value = "/qna/delete", method = RequestMethod.GET)
+	public String qnaDelete(HttpServletRequest request) {
+		int num = Integer.parseInt(request.getParameter("num"));
 
+		qnaService.deleteQna(num);
+		
+		return "redirect:/qna";
+	}
 	
+	@RequestMapping(value = "/qna/reply", method = RequestMethod.GET)
+	public String qnaReply(HttpServletRequest request, Model model) {
+		int num = Integer.parseInt(request.getParameter("num"));
+
+		QnaBean qb = qnaService.getQna(num);
+		model.addAttribute("qb", qb);
+		return "qna/qnaReply";
+	}
+	
+	@RequestMapping(value = "/qna/reply", method = RequestMethod.POST)
+	public String qnaReplyPost(QnaBean qb) {
+		
+		qnaService.reWriteQna(qb);
+		
+		return "redirect:/qna";
+	}
 	
 	
 }

@@ -11,7 +11,7 @@
 <link href='<c:url value="/resources/css/default.css" />' rel="stylesheet" type="text/css">
 <link href='<c:url value="/resources/css/subpage.css" />' rel="stylesheet" type="text/css">
 <link href='<c:url value="/resources/css/content.css" />' rel="stylesheet" type="text/css">
-
+<script defer src='<c:url value="/resources/script/qna/qnaDelete.js" />' ></script>
 </head>
 <body>
 <div id="wrap">
@@ -37,15 +37,15 @@
 
 <c:if test="${!empty sessionScope.id }">
 	<c:if test="${sessionScope.id eq 'admin' }">
-			<input type="button" value="글삭제" class="writeBtn" onclick="location.href='qnaDelete.jsp?num=${qb.num}'">
+			<input type="button" value="글삭제" class="writeBtn" onclick="qnaDelete(${qb.num})">
 		<c:if test="${qb.state eq '답변대기' }">
-			<input type="button" value="답글달기" class="writeBtn" onclick="location.href='qnanswerForm.jsp?num=${qb.num}'">
+			<input type="button" value="답글달기" class="writeBtn" onclick="location.href='<c:url value="/qna/reply?num=${qb.num}&re_ref=${qb.re_ref}&re_lev=${qb.re_lev}&re_seq=${qb.re_seq}" />'">
 		</c:if>
 	</c:if>
 	
 	<c:if test="${nick eq qb.name }">
-		<input type="button" value="글수정" class="writeBtn" onclick="location.href='update?num=${qb.num}'">
-		<input type="button" value="글삭제" class="writeBtn" onclick="location.href='qnaDelete.jsp?num=${qb.num}'">
+		<input type="button" value="글수정" class="writeBtn" onclick="location.href='<c:url value="/qna/update?num=${qb.num}" />'">
+		<input type="button" value="글삭제" class="writeBtn" onclick="qnaDelete(${qb.num})">
 	</c:if>
 </c:if>
 </div>

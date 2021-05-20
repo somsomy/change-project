@@ -35,13 +35,18 @@
 		<c:forEach var="qb" items="${qbList }">
 			<tr onclick="location.href='qna/content?num=${qb.num}'" id="atr">
 			<td>${qb.state }</td>
-			<td class="left">${qb.subject }</td>
+			<td class="left">
+			      <c:if test="${qb.re_lev > 0 }">
+			      	<img src='<c:url value="/resources/images/board/level.gif" />' width="${qb.re_lev*10 }" height="15">
+			      	<img src='<c:url value="/resources/images/board/re.gif" />'>
+			      </c:if>
+			${qb.subject }</td>
 			<td>${qb.name }</td><td><fmt:formatDate value="${qb.date}" type="both" pattern="yyyy.MM.dd HH:mm"/></td><td>${qb.readcount }</td></tr>
 	</c:forEach>
 </table>
 <div class="clear"></div>
 <div id="wbtn">
-<input type="button" value="글쓰기" class="writeBtn" onclick="location.href='qna/write'">
+<input type="button" value="글쓰기" class="writeBtn" onclick="location.href='<c:url value="/qna/write" />'">
 </div>
 <div class="clear"></div>
 <div id="table_search">

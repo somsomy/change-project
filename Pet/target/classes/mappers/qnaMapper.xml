@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getQnaList" resultType="com.somsomy.domain.QnaBean">
-		select * from qna order by num desc limit #{startRow}, #{pageSize}
+		select * from qna order by re_ref desc, re_seq asc limit #{startRow}, #{pageSize}
 	</select>
 	
 	<select id="getMaxNum" resultType="java.lang.Integer">
@@ -33,4 +33,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update qna set subject=#{subject}, content=#{content} where num=#{num}
 	</update>
 	
+	<delete id="deleteQna">
+		delete from qna where num=#{num} or re_ref=#{num}
+	</delete>
+	
+	<update id="updateReseq">
+		update qna set re_seq=re_seq+1 where re_ref=#{re_ref} and re_seq>#{re_seq}
+	</update>
+	
+	<update id="updateState">
+		update qna set state='답변완료' where num=#{num}
+	</update>
 </mapper>

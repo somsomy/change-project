@@ -33,7 +33,7 @@
 <tr><td class="tdtd">작성자</td>
 <td class="tdtd">${qb.name }</td></tr>
 <tr class="subsub"><td class="consub">내용</td>
-<td class="consub"><textarea name="content" placeholder="내용을 입력해주세요." id="conupdate" required>${qb.content }</textarea></td></tr>
+<td class="consub"><textarea name="content" placeholder="내용을 입력해주세요." id="conupdate" autofocus required>${qb.content }</textarea></td></tr>
 </table>
 <div id="wbtn">
 <input type="submit" value="글수정" class="writeBtn" >
