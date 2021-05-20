@@ -42,19 +42,19 @@ public class AdminController {
 		return "petcenter/notice";
 	}
 	
-	@RequestMapping(value = "/noticeWrite", method = RequestMethod.GET)
+	@RequestMapping(value = "/notice/write", method = RequestMethod.GET)
 	public String noticeWrite() {
 		
 		
 		return "petcenter/noticeWrite";
 	}
 	
-	@RequestMapping(value = "/noticeWrite", method = RequestMethod.POST)
+	@RequestMapping(value = "/notice/write", method = RequestMethod.POST)
 	public String noticeWritePost(NoticeBean nb) {
 		
 		adminService.writeNotice(nb);
 		
-		return "redirect: /pet/notice";
+		return "redirect: notice";
 	}
 	
 	@RequestMapping(value = "/notice/content", method = RequestMethod.GET)
@@ -76,7 +76,7 @@ public class AdminController {
 		
 		
 		
-		return "redirect: /pet/notice";
+		return "redirect: notice";
 	}
 	
 }

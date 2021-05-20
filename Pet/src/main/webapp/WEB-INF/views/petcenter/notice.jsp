@@ -40,7 +40,7 @@
 <div id="wbtn">
 <c:if test="${!(empty sessionScope.id) }">
 	<c:if test="${sessionScope.id eq 'admin' }">
-		<input type="button" value="글쓰기" class="writeBtn" onclick="location.href='noticeWrite'">
+		<input type="button" value="글쓰기" class="writeBtn" onclick="location.href='notice/write'">
 	</c:if>
 </c:if>
 

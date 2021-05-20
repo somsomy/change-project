@@ -32,7 +32,7 @@
 </table>
 
 <div id="wbtn">
-<input type="button" value="목록" class="writeBtn" onclick="location.href='/pet/notice'">
+<input type="button" value="목록" class="writeBtn" onclick="location.href='notice'">
 <c:if test="${! (empty sessionScope.id) }">
 	<c:if test="${sessionScope.id eq 'admin' }">
 		<input type="button" value="수정" class="writeBtn" onclick="location.href='noticeUpdateForm.jsp?num=${nb.num}'">

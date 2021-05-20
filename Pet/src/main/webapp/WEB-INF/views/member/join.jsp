@@ -32,7 +32,7 @@
 <article id="joinArticle">
 <h1>회원가입</h1>
 <hr>
-<form action='<c:url value="/member/join" />'  name="fr" id="join" method="post" >
+<form action='<c:url value="/join" />'  name="fr" id="join" method="post" >
 <fieldset>
 <h3>아이디 <img src='<c:url value="/resources/images/dry-clean.png" />' class="dot"></h3>
 <input type="text" name="id" class="id"  id="id" onkeyup="idCheck()" maxlength="20" required>

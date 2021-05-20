@@ -17,42 +17,42 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	@RequestMapping(value = "/member/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		
 		return "member/login";
 	}
 	
-	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(MemberBean mb, HttpSession session, Model model) {
 		
 		MemberBean loginMb = memberService.userCheck(mb);
 		
 		if(loginMb != null) {
 			session.setAttribute("id", mb.getId());
-			return "redirect: /main";
+			return "redirect: main";
 		}else {
 			model.addAttribute("msg", "가입되지 않은 아이디거나 잘못된 비밀번호입니다.");
 			return "member/msg";
 		}
 	}
 	
-	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.invalidate();
 		
-		return "redirect: /pet/main";
+		return "redirect: main";
 	}
 
-	@RequestMapping(value = "/member/join", method = RequestMethod.GET)
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
 		
 		return "member/join";
 	}
 	
-	@RequestMapping(value = "/member/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinPost(MemberBean mb) {
 		memberService.join(mb);
-		return "redirect: /pet/member/login";
+		return "redirect: login";
 	}
 }

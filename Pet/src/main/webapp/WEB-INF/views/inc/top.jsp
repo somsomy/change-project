@@ -7,10 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"><header>
 	
 <c:if test="${empty sessionScope.id }">
-	<div id="login"><a href='<c:url value="/main" />' >홈 | </a> <a href='<c:url value="/member/login" />' >로그인</a> | <a href='<c:url value="/member/join" />' >회원가입</a></div>
+	<div id="login"><a href='<c:url value="/main" />' >홈 | </a> <a href='<c:url value="/login" />' >로그인</a> | <a href='<c:url value="/join" />' >회원가입</a></div>
 </c:if>
 <c:if test="${!(empty sessionScope.id) }">
-	<div id="login">${sessionScope.id }님 | <a href='<c:url value="/member/logout" />' >로그아웃</a> | <a href='<c:url value="/member/mypage" />' >마이페이지</a></div>
+	<div id="login">${sessionScope.id }님 | <a href='<c:url value="/logout" />' >로그아웃</a> | <a href='<c:url value="/mypage" />' >마이페이지</a></div>
 </c:if>
 
 <div id="catcenter">고양이보호센터</div>
@@ -50,7 +50,7 @@
 	 </ul>
 	</li>
 	<li class="tl"><a href="../volunteer/volunteer.jsp" class="ta">자원봉사</a></li>
-    <li class="tl"><a href="../qna/qna.jsp" class="ta">문의합니다</a></li>
+    <li class="tl"><a href='<c:url value="/qna" />' class="ta">문의합니다</a></li>
 </ul>
 </nav>
 </header>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,25 +15,22 @@
 <jsp:include page="../inc/top.jsp"/>
 <div class="clear"></div>
 <div id="divSub">
-<div id="text">공지사항</div>
-<hr id="texthr">
-<div id="text2">고양이의 하루의 공지사항입니다.</div>
-<jsp:include page="../inc/petcenterSubMenu.jsp"></jsp:include>
+<div id="text">Q&A</div>
+<div id="sub_img_qna"></div>
+<nav id="sub_menu">
+</nav>
 </div>
 <div id="divArticle">
-<c:if test="${empty sessionScope.id }">
-	<c:if test="${!sessionScope.id eq 'admin'}">
-		<c:redirect url="/login"/>
-	</c:if>
+<c:if test="${empty sessionScope.id}">
+	<c:redirect url="/login"/>
 </c:if>
-
 <article>
-<h1>공지사항 게시판</h1>
+<h1>Q&A 작성</h1>
 <hr>
-<form action='<c:url value="/notice/write" />' method="post">
+<form action='<c:url value="/qna/write" />' method="post">
 <table id="cnotice">
 <tr id="sub"><td >제목</td><td><input type="text" name="subject" id="title" placeholder="제목을 입력해주세요." required></td></tr>
-<tr><td class="tdtd">작성자</td><td class="tdtd"><input type="text" name="name" value="${sessionScope.id }" id="writer" readonly></td></tr>
+<tr><td class="tdtd">작성자</td><td class="tdtd"><input type="text" name="name" value="${nick }" id="writer" readonly></td></tr>
 <tr class="subsub"><td class="consub">내용</td><td class="consub"><textarea name="content" placeholder="내용을 입력해주세요." id="conupdate" required></textarea></td></tr>
 </table>
 <div class="clear"></div>
