@@ -49,7 +49,7 @@
 	 	<li><a href="../support/supportCats.jsp" >1:1 후원</a></li>
 	 </ul>
 	</li>
-	<li class="tl"><a href="../volunteer/volunteer.jsp" class="ta">자원봉사</a></li>
+	<li class="tl"><a href='<c:url value="/volunteer" />' class="ta">자원봉사</a></li>
     <li class="tl"><a href='<c:url value="/qna" />' class="ta">문의합니다</a></li>
 </ul>
 </nav>

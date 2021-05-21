@@ -32,7 +32,7 @@
     <th class="tdate">작성날짜</th>
     <th class="tread">조회수</th></tr>
     <c:forEach var="nb" items="${nbList }">
-    	<tr onclick="location.href='notice/content?num=${nb.num}'" id="atr"><td>${nb.num }</td><td class="left">${nb.subject }</td>
+    	<tr onclick="location.href='<c:url value="/notice/content?num=${nb.num}" />'" id="atr"><td>${nb.num }</td><td class="left">${nb.subject }</td>
 		<td>${nb.name }</td><td><fmt:formatDate value="${nb.date}" type="both" pattern="yyyy.MM.dd HH:mm"/></td><td>${nb.readcount }</td></tr>
     </c:forEach>
 </table>
@@ -40,7 +40,7 @@
 <div id="wbtn">
 <c:if test="${!(empty sessionScope.id) }">
 	<c:if test="${sessionScope.id eq 'admin' }">
-		<input type="button" value="글쓰기" class="writeBtn" onclick="location.href='notice/write'">
+		<input type="button" value="글쓰기" class="writeBtn" onclick="location.href='<c:url value="/notice/write" />'">
 	</c:if>
 </c:if>
 

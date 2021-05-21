@@ -12,6 +12,7 @@ public class PageBean {
 	private int endPage;
 	private int pageCount;
 	private String search;
+	private int num;
 	
 	public String getSearch() {
 		return search;
@@ -89,6 +90,12 @@ public class PageBean {
 	}
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	
 	
