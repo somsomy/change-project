@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.somsomy.domain.PageBean;
+import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 
@@ -72,5 +73,7 @@ public class VolunteerDAOImpl implements VolunteerDAO {
 	public void deleteReply(int num) {
 		sqlSession.delete(namespace + ".deleteReply", num);
 	}
+
+
 
 }

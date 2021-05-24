@@ -1,7 +1,10 @@
 package com.somsomy.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +13,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.somsomy.service.MemberService;
+import com.somsomy.service.ReplyService;
+import com.somsomy.service.VolunteerService;
 import com.somsomy.domain.MemberBean;
+import com.somsomy.domain.PageBean;
+import com.somsomy.domain.ReplyBean;
 
 
 @RestController
 public class AjaxController {
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private ReplyService replyService;
+	@Inject
+	private VolunteerService volunteerService;
 	
 	@RequestMapping(value = "/member/idcheck", method = RequestMethod.GET)
 	public ResponseEntity<String> idcheck(HttpServletRequest request) {
@@ -62,6 +73,62 @@ public class AjaxController {
 		}
 		
 		return entity;
+	}
+	
+	@RequestMapping(value = "/volunteer/reply/update", method = RequestMethod.GET)
+	public void updateReply(ReplyBean rb) {
+//		ResponseEntity<String> entity = null;
+		replyService.updateReply(rb);
+	}
+	
+	@RequestMapping(value = "/volunteer/content/reply", method = RequestMethod.POST)
+	public ResponseEntity<List<ReplyBean>> replyList(HttpServletRequest request) {
+		ResponseEntity<List<ReplyBean>> entity = null;
+		int num = Integer.parseInt(request.getParameter("boardNum"));
+		
+		PageBean pb = new PageBean();
+		pb.setPageSize(15);
+		
+		if(request.getParameter("pageNum") == null) {
+			pb.setPageNum("1");
+		}else {
+			pb.setPageNum(request.getParameter("pageNum"));
+		}
+		
+		pb.setCount(volunteerService.getVolunteerReplyCount(num));
+		pb.setNum(num);
+		
+		List<ReplyBean> rbList = replyService.getReplyList(pb);
+
+		try {
+			entity = new ResponseEntity<List<ReplyBean>>(rbList, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<List<ReplyBean>>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value = "/volunteer/reply/write", method = RequestMethod.POST)
+	public void replyWrite(HttpSession session, ReplyBean rb) {
+		MemberBean mb = memberService.getMember((String) session.getAttribute("id"));
+		rb.setName(mb.getNick());
+		replyService.writeReply(rb);
+	}
+	
+	@RequestMapping(value = "/volunteer/reply/delete", method = RequestMethod.POST)
+	public void replyDelete(ReplyBean rb) {
+		
+		replyService.deleteReply(rb);
+
+	}
+	
+	@RequestMapping(value = "/volunteer/reply/rewrite", method = RequestMethod.GET)
+	public void replyReWrite(HttpSession session, ReplyBean rb) {
+		MemberBean mb = memberService.getMember((String) session.getAttribute("id"));
+		rb.setName(mb.getNick());
+		replyService.rewriteReply(rb);
 	}
 
 }

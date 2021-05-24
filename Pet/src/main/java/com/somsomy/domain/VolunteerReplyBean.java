@@ -20,6 +20,7 @@ public class VolunteerReplyBean {
 	private String repName;
 	private String repContent;
 	private Timestamp repDate;
+	private Timestamp deleteAt;
 	public int getNum() {
 		return num;
 	}
@@ -115,6 +116,12 @@ public class VolunteerReplyBean {
 	}
 	public void setRepDate(Timestamp repDate) {
 		this.repDate = repDate;
+	}
+	public Timestamp getDeleteAt() {
+		return deleteAt;
+	}
+	public void setDeleteAt(Timestamp deleteAt) {
+		this.deleteAt = deleteAt;
 	}
 	
 	

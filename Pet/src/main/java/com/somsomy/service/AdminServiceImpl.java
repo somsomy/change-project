@@ -19,6 +19,9 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<NoticeBean> getNoticeList(PageBean pb) {
+		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
+		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
+		
 		return adminDAO.getNoticeList(pb);
 	}
 

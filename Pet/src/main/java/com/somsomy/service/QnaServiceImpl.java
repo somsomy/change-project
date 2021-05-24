@@ -24,6 +24,9 @@ public class QnaServiceImpl implements QnaService {
 
 	@Override
 	public List<QnaBean> getQnaList(PageBean pb) {
+		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
+		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
+		
 		return qnaDAO.getQnaList(pb);
 	}
 

@@ -7,8 +7,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.somsomy.dao.ReplyDAO;
 import com.somsomy.dao.VolunteerDAO;
 import com.somsomy.domain.PageBean;
+import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 
@@ -49,6 +51,9 @@ public class VolunteerServiceImpl implements VolunteerService {
 
 	@Override
 	public List<VolunteerReplyBean> getVolunteerReplyList(PageBean pb) {
+		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
+		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
+		
 		return volunteerDAO.getVolunteerReplyList(pb);
 	}
 
@@ -72,5 +77,6 @@ public class VolunteerServiceImpl implements VolunteerService {
 		volunteerDAO.deleteVolunteer(num);
 		volunteerDAO.deleteReply(num);
 	}
+
 
 }

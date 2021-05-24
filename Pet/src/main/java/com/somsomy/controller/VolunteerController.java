@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.somsomy.domain.MemberBean;
 import com.somsomy.domain.PageBean;
+import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 import com.somsomy.service.MemberService;
@@ -87,6 +88,7 @@ public class VolunteerController {
 	@RequestMapping(value = "/volunteer/content", method = RequestMethod.GET)
 	public String volunteerContent(HttpServletRequest request, HttpSession session, Model model) {
 		int num = Integer.parseInt(request.getParameter("num"));
+		String id = (String) session.getAttribute("id");
 		
 		volunteerService.updateReadcount(num);
 		
@@ -103,9 +105,12 @@ public class VolunteerController {
 		pb.setNum(num);
 		
 		List<VolunteerReplyBean> vrbList = volunteerService.getVolunteerReplyList(pb);
-	
+		
+		MemberBean mb = memberService.getMember(id);
+
 		model.addAttribute("pb", pb);
 		model.addAttribute("vrbList", vrbList);
+		model.addAttribute("mb", mb);
 		
 		return "volunteer/volunteerContent";
 	}
@@ -164,4 +169,6 @@ public class VolunteerController {
 		
 		return "redirect:/volunteer";
 	}
+	
+
 }

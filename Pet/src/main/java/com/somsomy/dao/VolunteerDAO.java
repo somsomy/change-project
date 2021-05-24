@@ -3,6 +3,7 @@ package com.somsomy.dao;
 import java.util.List;
 
 import com.somsomy.domain.PageBean;
+import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 
@@ -29,4 +30,5 @@ public interface VolunteerDAO {
 	void deleteVolunteer(int num);
 
 	void deleteReply(int num);
+
 }

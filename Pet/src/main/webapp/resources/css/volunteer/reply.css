@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.replyUpdateContainer {
+	display: none;
+}
+
 #reply {
 	width: 100%;
 	margin-bottom: 10px;
@@ -93,26 +97,38 @@
 	margin-bottom: 4px;
 }
 
-#comtext {
+#comtext, .repReWrite {
 	width: 100%;
 	height: 70px;
 	font-size: 14px;
 	border-color: #c3c3c3;
-	 overflow-y: hidden;
-  resize: none;
+	overflow-y: hidden;
+ 	resize: none;
 }
 
-.combtn {
+.replyUpdateContainer {
+	position: relative;
+}
+
+.combtn, .combtn2, .combtn3, .repUpdateCancel {
 	background-color: white;
 	border: 2px solid #adadad;
 	border-radius: 15px;
 	padding: 7px;
 	position: absolute;
 	bottom: 15px;
+	right: 60px;
+}
+
+.combtn {
+	right: 5px;	
+}
+
+.repUpdateCancel {
 	right: 5px;
 }
 
-.combtn:hover {
+.combtn:hover, .combtn2:hover, .combtn3:hover, .repUpdateCancel:hover {
 	color: white;
 	background-color: black;
 	cursor: pointer;

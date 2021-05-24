@@ -29,7 +29,7 @@ public class PageBean {
 		init();
 	}
 	public void init() {
-		pageBlock=10;
+		pageBlock=15;
 		startPage=((currentPage-1) /pageBlock)*pageBlock + 1;
 		endPage=startPage+pageBlock-1;
 		pageCount=count/pageSize+(count%pageSize==0?0:1);

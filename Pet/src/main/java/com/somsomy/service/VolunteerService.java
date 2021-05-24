@@ -3,6 +3,7 @@ package com.somsomy.service;
 import java.util.List;
 
 import com.somsomy.domain.PageBean;
+import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 

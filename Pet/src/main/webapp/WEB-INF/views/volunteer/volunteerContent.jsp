@@ -12,8 +12,8 @@
 <link href='<c:url value="/resources/css/subpage.css" />' rel="stylesheet" type="text/css">
 <link href='<c:url value="/resources/css/content.css" />' rel="stylesheet" type="text/css">
 <link href='<c:url value="/resources/css/volunteer/reply.css" />' rel="stylesheet" type="text/css">
-
- <script defer src="../script/reply.js"></script>
+<script src='<c:url value="/resources/script/jquery-3.5.1.js" />'></script>
+ <script defer src='<c:url value="/resources/script/reply/replyUpdate.js" />'></script>
 </head>
 <body>
 <div id="wrap">
@@ -53,102 +53,76 @@
 </c:choose>
 </td></tr>
 </table>
-
+<input type="hidden" class="repNick" value="${mb.nick }">
+<div class="outerReply">
 <c:forEach var="vrb" items="${vrbList }">
 	<c:if test="${vrb.repNum ne 0 }">
 		<table id="reply">
 			<tr>
 			<td rowspan="3"><c:if test="${vrb.re_lev > 0 }"><img src='<c:url value="/resources/images/board/blank.png"/>' width="${vrb.re_lev*5 }" ></c:if>
 			</td>
-			<td class="rep">${vrb.repName }</td>
-			</tr>
-			<tr><td class="rep"><fmt:formatDate value="${vrb.repDate}" type="both" pattern="yyyy.MM.dd HH:mm"/></td></tr>
-			<tr>
-			<td class="recon" >${vrb.repContent }</td>
-<!-- 			<td> -->
-			<%-- <% --%>
-			<!-- if(mb.getNick()!=null) { -->
-			<%-- if(mb.getNick().equals(rb.getName())) { %> --%>
-			<%-- <a onclick="location.href='replyDelete.jsp?num=<%=rb.getNum()%>&boardNum=<%=rb.getBoardNum()%>&re_lev=<%=rb.getRe_lev()%>&re_ref=<%=rb.getRe_ref()%>'">삭제</a> --%>
-			<%-- <a onclick="updateOpen<%=i%>()">수정</a> --%>
-			<%-- <%} } --%>
-			
-			<!-- if(id!=null) { -->
-			<%-- %> --%>
-			<%-- <a onclick="open<%=i%>()" >답글</a> --%>
-			<%-- <%}%> --%>
-<!-- 			</td> -->
+			<c:choose>
+				<c:when test="${empty vrb.deleteAt }">
+					<td class="rep">${vrb.repName }</td>
+					<td>
+						<c:if test="${!empty sessionScope.id }">
+							<c:if test="${!empty mb }">
+								<c:if test="${mb.nick eq vrb.repName }">
+									<a class="replyDelete">삭제</a>
+									<a class="replyUpdate">수정</a>						
+								</c:if>
+							</c:if>
+							<a class="replyWrite">답글</a>
+						</c:if>
+					</td>
+					<tr><td class="rep" colspan="2"><fmt:formatDate value="${vrb.repDate}" type="both" pattern="yyyy.MM.dd HH:mm"/></td></tr>
+					<tr>
+					<td class="recon" colspan="2">${vrb.repContent }</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<td>삭제된 댓글입니다.</td>
+				</c:otherwise>
+			</c:choose>
 			</tr>
 		</table>
+		<div class="replyUpdateContainer">
+			<input type="hidden" id="repNum" value="${vrb.repNum }">
+			<input type="hidden" class="re_ref" value="${vrb.re_ref }">
+			<input type="hidden" class="re_lev" value="${vrb.re_lev }">
+			<input type="hidden" class="re_seq" value="${vrb.re_seq }">
+			<textarea name="content" class="repReWrite" >${vrb.repContent }</textarea>
+			<input type="button" class="combtn2" value="작성">
+			<input type="button" class="repUpdateCancel" value="취소">
+		</div>
 	</c:if>
 </c:forEach>
-
-<!-- <form action="replyUpdatePro.jsp" method="post" name="fr"> -->
-<%-- <div id="hideReplyUpdate<%=hide %>" class="hideRep"> --%>
-<%-- <input type="hidden" name="num" value="<%=rb.getNum()%>"> --%>
-<%-- <input type="hidden" name="boardNum" value="<%=rb.getBoardNum()%>"> --%>
-<%-- <textarea id="hidecont" name="recontent" onkeyup="resize(this)"><%=rb.getContent() %></textarea> --%>
-<!-- <input type="submit" value="수정" id="rebtn"> -->
-<%-- <input type="button" value="취소" onclick="updateClose<%=i%>()" id="recancelBtn"> --%>
-<!-- </div> -->
-<!-- </form> -->
-
-<!-- <form action="replyRegPro2.jsp" method="post" name="fr"> -->
-<%-- <div id="hideReply<%=hide %>" class="hideRep"> --%>
-<%-- <input type="hidden" name="boardNum" value="<%=num%>"> --%>
-<%-- <input type="hidden" name="re_ref" value="<%=rb.getRe_ref()%>"> --%>
-<%-- <input type="hidden" name="re_lev" value="<%=rb.getRe_lev() %>"> --%>
-<%-- <input type="hidden" name="re_seq" value="<%=rb.getRe_seq() %>"> --%>
-<%-- <input type="hidden" name="name" value="<%=mb.getNick() %>"> --%>
-<!-- <textarea id="hidecont" name="recontent" onkeyup="resize(this)"></textarea> -->
-<!-- <input type="submit" value="등록" id="rebtn"> -->
-<%-- <input type="button" value="취소" onclick="close<%=i%>()" id="recancelBtn"> --%>
-<!-- </div> -->
-<!-- </form> -->
-<!-- <script> -->
-<%-- function open<%=i%>() { --%>
-<%-- 	document.getElementById('hideReply'+<%=i%>).style.display='block'; --%>
-	
-<!-- } -->
-<%-- function updateOpen<%=i%>() { --%>
-<%-- 	document.getElementById('hideReplyUpdate'+<%=i%>).style.display='block'; --%>
-<!-- } -->
-
-<%-- function close<%=i%>() { --%>
-<%-- 	document.getElementById('hideReply'+<%=i%>).style.display='none'; --%>
-<!-- } -->
-
-<%-- function updateClose<%=i%>() { --%>
-<%-- 	document.getElementById('hideReplyUpdate'+<%=i%>).style.display='none'; --%>
-<!-- } -->
-<!-- </script> -->
+</div>
 <div id="page_control">
 
 <c:if test="${pb.startPage > pb.pageBlock }">
-	<a href='<c:url value="/volunteer/content?pageNum=${pb.startPage - pb.pageBlock }" />'>이전</a>
+	<a href='<c:url value="/volunteer/content?num=${vrbList.get(0).num}&pageNum=${pb.startPage - pb.pageBlock }" />'>이전</a>
 </c:if>
 <c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage }" step="1">
-	<a href='<c:url value="/volunteer/content?pageNum=${i }" />'>${i }</a>
+	<a href='<c:url value="/volunteer/content?num=${vrbList.get(0).num}&pageNum=${i }" />'>${i }</a>
 </c:forEach>
 <c:if test="${pb.endPage < pb.pageCount }">
-	<a href='<c:url value="/volunteer/content?pageNum=${pb.startPage + pb.pageBlock }" />'>다음</a>
+	<a href='<c:url value="/volunteer/content?num=${vrbList.get(0).num}&pageNum=${pb.startPage + pb.pageBlock }" />'>다음</a>
 </c:if>
 </div>
 
 <div id="comdiv">
 <span id="com">댓글작성</span>
-<form action="replyRegPro.jsp" method="post">
-<input type="hidden" name="boardNum" value="${vrbList.get(0).num }">
+<input type="hidden" class="boardNum" name="boardNum" value="${vrbList.get(0).num }">
 <c:choose>
 	<c:when test="${!empty sessionScope.id }">
 		<textarea name="content" id="comtext" onkeyup="resize(this)" ></textarea>
-		<input type="submit" class="combtn" value="작성">
+		<input type="button" class="combtn" value="작성">
 	</c:when>
 	<c:otherwise>
 		<div>로그인이 필요합니다.</div>
 	</c:otherwise>
 </c:choose>
-</form>
 </div>
 <div id="wbtn">
 <input type="button" value="목록" class="writeBtn" onclick="location.href='<c:url value="/volunteer" />'" >
