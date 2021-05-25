@@ -12,5 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCatCount" resultType="java.lang.Integer">
 		select count(*) from cats where cat_ing='보호중'
 	</select>
+	
+	<select id="findByCatId" resultType="com.somsomy.domain.CatsBean">
+		select * from cats where catid=#{catId}
+	</select>
 
 </mapper>

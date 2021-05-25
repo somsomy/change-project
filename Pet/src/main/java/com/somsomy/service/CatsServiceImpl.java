@@ -29,4 +29,9 @@ public class CatsServiceImpl implements CatsService{
 		return catsDAO.getCatCount();
 	}
 
+	@Override
+	public CatsBean findByCatId(int catId) {
+		return catsDAO.findByCatId(catId);
+	}
+
 }

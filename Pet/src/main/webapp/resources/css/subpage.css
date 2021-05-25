@@ -15,7 +15,7 @@ background-size: 100% 400px;
 margin: 0 auto;}
 
 #sub_img_support{width: 100%; height: 400px;
-background-image: url("../images/support/supimg.png");
+background-image: url("../images/subimg//supportimg.png");
 background-repeat: no-repeat;
 background-position: center top;
 background-size: 100% 400px;
@@ -43,7 +43,7 @@ background-size: 100% 400px;
 margin: 0 auto;}
 
 #sub_img_center{width: 100%; height: 400px;
-background-image: url("../images/center/adoptimg.png");
+background-image: url("../images/subimg/adoptimg.png");
 background-repeat: no-repeat;
 background-position: center top;
 background-size: 100% 400px;

@@ -27,4 +27,9 @@ public class CatsDAOImpl implements CatsDAO{
 		return sqlSession.selectOne(namespace + ".getCatCount");
 	}
 
+	@Override
+	public CatsBean findByCatId(int catId) {
+		return sqlSession.selectOne(namespace + ".findByCatId", catId);
+	}
+
 }

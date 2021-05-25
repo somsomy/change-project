@@ -34,16 +34,16 @@
 	 	<li><a href="../catfind/catFound.jsp" >찾았어요</a></li>
 	 </ul>
 	</li>
-	<li class="tl"><a href="../center/adoptInfo.jsp" class="ta">고양이를 입양합니다</a>
+	<li class="tl"><a href='<c:url value="/adopt/info" />' class="ta">고양이를 입양합니다</a>
 	 <ul class="submenu">
-	 	<li><a href="../center/adoptInfo.jsp" >입양 안내</a></li>
+	 	<li><a href='<c:url value="/adopt/info" />' >입양 안내</a></li>
 	 	<li><a href="../center/cats.jsp" >보호중인 아이들</a></li>
-	 	<li><a href="../center/adopt.jsp" >입양문의</a></li>
+	 	<li><a href='<c:url value="/adopt" />' >입양문의</a></li>
 	 	<li><a href="../center/catsAdoptComp.jsp" >입양 완료</a></li>
 	 	<li><a href="../center/comment.jsp" >입양 후기</a></li>
 	 </ul>
 	</li>
-	<li class="tl"><a href="../support/supportCats.jsp" class="ta">고양이에게 후원합니다</a>
+	<li class="tl"><a href='<c:url value="/support" />'class="ta">고양이에게 후원합니다</a>
 	 <ul class="submenu">
 	 	<li><a href="#" >후원 안내</a></li>
 	 	<li><a href="../support/supportCats.jsp" >1:1 후원</a></li>
