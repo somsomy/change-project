@@ -8,6 +8,6 @@
 <li onclick="location.href='cats.jsp'">보호중인 아이들</li>
 <li onclick="location.href='<c:url value="/adopt" />' ">입양문의</li>
 <li onclick="location.href='catsAdoptComp.jsp'">입양완료</li>
-<li onclick="location.href='comment.jsp'">입양후기</li>
+<li onclick="location.href='<c:url value="/adopt/review" />'">입양후기</li>
 </ul>
 </nav>

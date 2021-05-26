@@ -26,4 +26,29 @@ public class AdoptDAOImpl implements AdoptDAO {
 		return sqlSession.selectList(namespace + ".getBoardList", pb);
 	}
 
+	@Override
+	public void writeAdopt(AdoptBean ab) {
+		sqlSession.insert(namespace + ".writeAdopt", ab);
+	}
+
+	@Override
+	public AdoptBean getAdopt(int num) {
+		return sqlSession.selectOne(namespace + ".getAdopt", num);
+	}
+
+	@Override
+	public void updateReadcount(int num) {
+		sqlSession.update(namespace + ".updateReadcount", num);
+	}
+
+	@Override
+	public void updateAdopt(AdoptBean ab) {
+		sqlSession.update(namespace + ".updateAdopt", ab);
+	}
+
+	@Override
+	public void deleteAdopt(int num) {
+		sqlSession.delete(namespace + ".deleteAdopt", num);
+	}
+
 }

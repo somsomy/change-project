@@ -11,4 +11,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getBoardList" resultType="com.somsomy.domain.AdoptBean">
 		select * from adoptboard order by num desc limit #{startRow}, #{pageSize}
 	</select>
+	
+	<insert id="writeAdopt">
+		insert into adoptboard
+		values(#{num}, #{name}, #{catName}, #{subject}, #{content}, #{date}, #{readcount})
+	</insert>
+	
+	<select id="getAdopt" resultType="com.somsomy.domain.AdoptBean">
+		select * from adoptboard where num=#{num}
+	</select>
+	
+	<update id="updateReadcount">
+		update adoptboard set readcount=readcount+1 where num=#{num}
+	</update>
+	
+	<update id="updateAdopt">
+		update adoptboard set catname=#{catName}, subject=#{subject}, content=#{content} where num=#{num}
+	</update>
+	
+	<delete id="deleteAdopt">
+		delete from adoptboard where num=#{num}
+	</delete>
 </mapper>

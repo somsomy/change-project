@@ -43,7 +43,7 @@
 		</c:if>
 	</c:if>
 	
-	<c:if test="${nick eq qb.name }">
+	<c:if test="${mb.nick eq qb.name }">
 		<input type="button" value="글수정" class="writeBtn" onclick="location.href='<c:url value="/qna/update?num=${qb.num}" />'">
 		<input type="button" value="글삭제" class="writeBtn" onclick="qnaDelete(${qb.num})">
 	</c:if>

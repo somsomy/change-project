@@ -11,4 +11,14 @@ public interface AdoptDAO {
 
 	List<AdoptBean> getBoardList(PageBean pb);
 
+	void writeAdopt(AdoptBean ab);
+
+	AdoptBean getAdopt(int num);
+
+	void updateReadcount(int num);
+
+	void updateAdopt(AdoptBean ab);
+
+	void deleteAdopt(int num);
+
 }

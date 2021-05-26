@@ -33,7 +33,7 @@
     <th class="tdate">작성날짜</th>
     <th class="tread">조회수</th></tr>
 <c:forEach var="ab" items="${abList }">
-	<tr onclick="location.href='adoptContent.jsp?num=${ab.num}'" id="atr"><td>${ab.num }</td><td class="left">${ab.subject }</td>
+	<tr onclick="location.href='<c:url value="/adopt/content?num=${ab.num}" />'" id="atr"><td>${ab.num }</td><td class="left">${ab.subject }</td>
 	<td>${ab.name }</td><td><fmt:formatDate value="${ab.date}" type="both" pattern="yyyy.MM.dd HH:mm"/></td><td>${ab.readcount }</td></tr>	
 </c:forEach>
 </table>

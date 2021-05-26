@@ -143,7 +143,6 @@ public class VolunteerController {
 		
 		VolunteerBean vb = new VolunteerBean();
 		vb.setNum(Integer.parseInt(request.getParameter("num")));
-		vb.setName(request.getParameter("name"));
 		vb.setState(request.getParameter("state"));
 		vb.setSubject(request.getParameter("subject"));
 		vb.setContent(request.getParameter("content"));
