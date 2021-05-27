@@ -10,15 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.somsomy.domain.CatsBean;
 import com.somsomy.domain.NoticeBean;
 import com.somsomy.domain.PageBean;
 import com.somsomy.service.AdminService;
+import com.somsomy.service.CatsService;
 
 @Controller
 public class AdminController {
 	
 	@Inject
 	private AdminService adminService;
+	@Inject
+	private CatsService catsService;
 
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
 	public String notice(HttpServletRequest request, Model model) {
@@ -77,4 +81,29 @@ public class AdminController {
 		return "redirect:/notice";
 	}
 	
+	@RequestMapping(value = "/admin/cats", method = RequestMethod.GET)
+	public String cats(HttpServletRequest request, Model model) {
+		PageBean pb = new PageBean();
+		pb.setPageSize(9);
+		
+		if(request.getParameter("pageNum") == null) {
+			pb.setPageNum("1");
+		} else {
+			pb.setPageNum(request.getParameter("pageNum"));
+		}
+		
+		pb.setCount(catsService.getCatCount());
+		
+		List<CatsBean> cbList = catsService.getCatList(pb);
+		
+		model.addAttribute("pb", pb);
+		model.addAttribute("cbList", cbList);
+		return "admin/cats";
+	}
+	
+	@RequestMapping(value = "/admin/cats/register", method = RequestMethod.GET)
+	public String catsRegister() {
+		
+		return "admin/catRegister";
+	}
 }

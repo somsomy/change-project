@@ -52,16 +52,16 @@ public class AjaxController {
 		return entity;
 	}
 	
-	@RequestMapping(value = "/member/nickcheck", method = RequestMethod.GET)
-	public ResponseEntity<String> nickcheck(HttpServletRequest request) {
+	@RequestMapping(value = "/nickcheck", method = RequestMethod.GET)
+	public ResponseEntity<String> nickcheck(MemberBean mb) {
 		ResponseEntity<String> entity = null;
 		String result = "";
-		String nick = request.getParameter("nick");
+		String nick = mb.getNick();
 		int check = memberService.nickCheck(nick);
-		MemberBean mb = memberService.findByNick(nick);
+		MemberBean dupNick = memberService.findByNick(mb);
 		
 		try {
-			if(mb != null) {
+			if(dupNick != null) {
 				result = "nickdup";
 			}else {
 				result = check >= 1? "nickok" : "wrong";
@@ -75,9 +75,13 @@ public class AjaxController {
 		return entity;
 	}
 	
+	@RequestMapping(value = "/member/update", method = RequestMethod.POST)
+	public void memberUpdate(MemberBean mb) {
+		memberService.memberUpdate(mb);
+	}
+	
 	@RequestMapping(value = "/volunteer/reply/update", method = RequestMethod.GET)
 	public void updateReply(ReplyBean rb) {
-//		ResponseEntity<String> entity = null;
 		replyService.updateReply(rb);
 	}
 	

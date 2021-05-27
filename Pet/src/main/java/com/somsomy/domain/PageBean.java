@@ -13,7 +13,7 @@ public class PageBean {
 	private int pageCount;
 	private String search;
 	private int num;
-	
+	private String id;
 	public String getSearch() {
 		return search;
 	}
@@ -96,6 +96,12 @@ public class PageBean {
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	

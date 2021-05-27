@@ -1,11 +1,15 @@
 package com.somsomy.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.somsomy.domain.PageBean;
 import com.somsomy.domain.SupporterBean;
+import com.somsomy.domain.SupporterCatsBean;
 
 @Repository
 public class SupportDAOImpl implements SupportDAO {
@@ -22,6 +26,32 @@ public class SupportDAOImpl implements SupportDAO {
 	@Override
 	public void insertSupporter(SupporterBean sb) {
 		sqlSession.insert(namespace + ".insertSupporter", sb);
+	}
+
+	@Override
+	public Integer getMyCatsCount(String id) {
+		return sqlSession.selectOne(namespace + ".getMyCatsCount", id);
+	}
+
+	@Override
+	public List<SupporterCatsBean> getMyCatsList(PageBean pb) {
+		
+		return sqlSession.selectList(namespace + ".getMyCatsList", pb);
+	}
+
+	@Override
+	public SupporterCatsBean getSupporter(int num) {
+		return sqlSession.selectOne(namespace + ".getSupporter", num);
+	}
+
+	@Override
+	public void updateSupporter(SupporterBean sb) {
+		sqlSession.update(namespace + ".updateSupporter", sb);
+	}
+
+	@Override
+	public void deleteSupporter(int num) {
+		sqlSession.delete(namespace + ".deleteSupporter", num);
 	}
 
 }

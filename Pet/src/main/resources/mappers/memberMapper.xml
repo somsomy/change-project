@@ -14,11 +14,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="findByNick" resultType="com.somsomy.domain.MemberBean">
-		select * from member where nick=#{nick}
+		select * from member where nick=#{nick} and not id=#{id}
 	</select>
 	
 	<insert id="join">
 		insert into member
 		values(#{id},#{pass},#{name},#{nick},#{email},#{phone},#{postCode},#{address},#{detailAddress},#{date}) 
 	</insert>
+	
+	<update id="memberUpdate">
+		update member set name=#{name}, nick=#{nick}, email=#{email}, phone=#{phone}, postcode=#{postCode}, address=#{address}, detailAddress=#{detailAddress} where id=#{id}
+	</update>
 </mapper>

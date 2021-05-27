@@ -10,7 +10,19 @@
 	<div id="login"><a href='<c:url value="/main" />' >홈 | </a> <a href='<c:url value="/login" />' >로그인</a> | <a href='<c:url value="/join" />' >회원가입</a></div>
 </c:if>
 <c:if test="${!(empty sessionScope.id) }">
-	<div id="login">${sessionScope.id }님 | <a href='<c:url value="/logout" />' >로그아웃</a> | <a href='<c:url value="/mypage" />' >마이페이지</a></div>
+	<div id="login">${sessionScope.id }님 | <a href='<c:url value="/logout" />' >로그아웃</a> | 
+		<c:choose>
+			<c:when test="${sessionScope.id eq 'admin' }">
+				<a href='<c:url value="/admin/cats" />' >관리페이지</a>			
+			</c:when>	
+			<c:otherwise>
+				<a href='<c:url value="/mypage" />' >마이페이지</a>			
+			</c:otherwise>
+		</c:choose>
+	
+	
+	
+	</div>
 </c:if>
 
 <div id="catcenter">고양이보호센터</div>

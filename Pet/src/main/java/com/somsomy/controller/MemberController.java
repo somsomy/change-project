@@ -1,6 +1,7 @@
 package com.somsomy.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -55,4 +56,16 @@ public class MemberController {
 		memberService.join(mb);
 		return "redirect:/login";
 	}
+	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public String myPage(HttpSession session, Model model) {
+		String id = (String) session.getAttribute("id");
+		
+		MemberBean mb = memberService.getMember(id);
+		
+		model.addAttribute("mb", mb);
+		return "member/myPage";
+	}
+	
+
 }

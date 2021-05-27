@@ -102,5 +102,12 @@ public class MemberBean {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
+	@Override
+	public String toString() {
+		return "MemberBean [id=" + id + ", pass=" + pass + ", name=" + name + ", nick=" + nick + ", emailId=" + emailId
+				+ ", email=" + email + ", phone=" + phone + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
+				+ phone3 + ", postCode=" + postCode + ", address=" + address + ", detailAddress=" + detailAddress
+				+ ", date=" + date + "]";
+	}
 	
 }

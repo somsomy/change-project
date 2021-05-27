@@ -50,8 +50,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberBean findByNick(String nick) {
-		return memberDAO.findByNick(nick);
+	public MemberBean findByNick(MemberBean mb) {
+		return memberDAO.findByNick(mb);
 	}
 
 	@Override
@@ -112,6 +112,11 @@ public class MemberServiceImpl implements MemberService{
 		mb.setDate(new Timestamp(System.currentTimeMillis()));
 		
 		memberDAO.join(mb);
+	}
+
+	@Override
+	public void memberUpdate(MemberBean mb) {
+		memberDAO.memberUpdate(mb);
 	}
 
 

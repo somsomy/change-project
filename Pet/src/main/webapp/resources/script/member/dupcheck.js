@@ -31,8 +31,9 @@
 				return;
 			}
 			
-			$.ajax('nickcheck', {
-				data:{nick : $('#nick').val()},
+			$.ajax({
+				url: '/pet/nickcheck',
+				data:{nick : $('#nick').val(), id: $('.myPageid').val()},
 				success: function(rdata){
 					if(rdata == 'nickdup'){
 						rdata = '닉네임 중복';

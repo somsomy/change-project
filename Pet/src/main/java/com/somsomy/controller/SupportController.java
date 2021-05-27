@@ -15,6 +15,7 @@ import com.somsomy.domain.CatsBean;
 import com.somsomy.domain.MemberBean;
 import com.somsomy.domain.PageBean;
 import com.somsomy.domain.SupporterBean;
+import com.somsomy.domain.SupporterCatsBean;
 import com.somsomy.service.CatsService;
 import com.somsomy.service.MemberService;
 import com.somsomy.service.SupportService;
@@ -91,4 +92,67 @@ public class SupportController {
 		return "redirect:/support";
 	}
 	
+	@RequestMapping(value = "/mycats", method = RequestMethod.GET)
+	public String myCats(HttpServletRequest request, HttpSession session, Model model) {
+		String id = (String) session.getAttribute("id");
+		
+		PageBean pb = new PageBean();
+		pb.setPageSize(3);
+		
+		if(request.getParameter("pageNum") == null) {
+			pb.setPageNum("1");
+		} else {
+			pb.setPageNum(request.getParameter("pageNum"));
+		}
+		
+		pb.setCount(supportService.getMyCatsCount(id));
+		pb.setId(id);
+		
+		List<SupporterCatsBean> scbList = supportService.getMyCatsList(pb);
+		
+		model.addAttribute("pb", pb);
+		model.addAttribute("scbList", scbList);
+		
+		return "mycats/myCats";
+	}
+	
+	@RequestMapping(value = "/mycats/content", method = RequestMethod.GET)
+	public String myCatsContent(HttpServletRequest request, Model model) {
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		SupporterCatsBean scb = supportService.getSupporter(num);
+		
+		model.addAttribute("scb", scb);
+		
+		return "mycats/myCatsContent";
+	}
+	
+	@RequestMapping(value = "/mycats/update", method = RequestMethod.GET)
+	public String myCatsUpdate(HttpServletRequest request, Model model) {
+		int num = Integer.parseInt(request.getParameter("num"));
+		
+		SupporterCatsBean scb = supportService.getSupporter(num);
+		
+		model.addAttribute("scb", scb);
+		
+		return "mycats/myCatsUpdate";
+	}
+	
+	@RequestMapping(value = "/mycats/update", method = RequestMethod.POST)
+	public String myCatsUpdatePost(SupporterBean sb) {
+
+		supportService.updateSupporter(sb);
+		
+		return "redirect:/mycats";
+	}
+	
+	
+	@RequestMapping(value = "/mycats/cancel", method = RequestMethod.GET)
+	public String myCatsCancel(HttpServletRequest request) {
+		int num = Integer.parseInt(request.getParameter("num"));
+
+		supportService.deleteSupporter(num);
+		
+		return "redirect:/mycats";
+	}
 }
