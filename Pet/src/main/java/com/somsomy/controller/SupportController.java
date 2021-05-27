@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.somsomy.domain.CatsBean;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.MemberBean;
 import com.somsomy.domain.PageBean;
 import com.somsomy.domain.SupporterBean;
@@ -96,7 +97,7 @@ public class SupportController {
 	public String myCats(HttpServletRequest request, HttpSession session, Model model) {
 		String id = (String) session.getAttribute("id");
 		
-		PageBean pb = new PageBean();
+		FindPageBean pb = new FindPageBean();
 		pb.setPageSize(3);
 		
 		if(request.getParameter("pageNum") == null) {

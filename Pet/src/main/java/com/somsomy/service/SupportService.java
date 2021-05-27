@@ -2,7 +2,7 @@ package com.somsomy.service;
 
 import java.util.List;
 
-import com.somsomy.domain.PageBean;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.SupporterBean;
 import com.somsomy.domain.SupporterCatsBean;
 
@@ -12,7 +12,7 @@ public interface SupportService {
 
 	Integer getMyCatsCount(String id);
 
-	List<SupporterCatsBean> getMyCatsList(PageBean pb);
+	List<SupporterCatsBean> getMyCatsList(FindPageBean pb);
 
 	SupporterCatsBean getSupporter(int num);
 

@@ -2,8 +2,8 @@ package com.somsomy.dao;
 
 import java.util.List;
 
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.PageBean;
-import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 
@@ -19,7 +19,7 @@ public interface VolunteerDAO {
 
 	void updateReadcount(int num);
 
-	List<VolunteerReplyBean> getVolunteerReplyList(PageBean pb);
+	List<VolunteerReplyBean> getVolunteerReplyList(FindPageBean pb);
 
 	int getVolunteerReplyCount(int num);
 

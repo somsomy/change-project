@@ -95,5 +95,12 @@ public class CatsBean {
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
 	}
+	@Override
+	public String toString() {
+		return "CatsBean [catId=" + catId + ", catName=" + catName + ", catAge=" + catAge + ", catGender=" + catGender
+				+ ", catNeuter=" + catNeuter + ", catDate=" + catDate + ", catVaccination=" + catVaccination
+				+ ", catIng=" + catIng + ", catInfo=" + catInfo + ", date=" + date + ", fileName=" + fileName
+				+ ", fileRealName=" + fileRealName + ", readcount=" + readcount + "]";
+	}
 	
 }

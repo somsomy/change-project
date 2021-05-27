@@ -49,9 +49,9 @@
 	<li class="tl"><a href='<c:url value="/adopt/info" />' class="ta">고양이를 입양합니다</a>
 	 <ul class="submenu">
 	 	<li><a href='<c:url value="/adopt/info" />' >입양 안내</a></li>
-	 	<li><a href="../center/cats.jsp" >보호중인 아이들</a></li>
+	 	<li><a href='<c:url value="/cats?state=protected" />'>보호중인 아이들</a></li>
 	 	<li><a href='<c:url value="/adopt" />' >입양문의</a></li>
-	 	<li><a href="../center/catsAdoptComp.jsp" >입양 완료</a></li>
+	 	<li><a href='<c:url value="/cats?state=complete" />'>입양 완료</a></li>
 	 	<li><a href='<c:url value="/adopt/review" />' >입양 후기</a></li>
 	 </ul>
 	</li>

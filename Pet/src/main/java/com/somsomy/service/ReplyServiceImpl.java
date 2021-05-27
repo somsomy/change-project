@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.somsomy.dao.ReplyDAO;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.PageBean;
 import com.somsomy.domain.ReplyBean;
 
@@ -22,7 +23,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyBean> getReplyList(PageBean pb) {
+	public List<ReplyBean> getReplyList(FindPageBean pb) {
 		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
 		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
 		

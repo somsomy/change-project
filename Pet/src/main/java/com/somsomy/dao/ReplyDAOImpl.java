@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.somsomy.domain.PageBean;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.ReplyBean;
 
 @Repository
@@ -32,7 +32,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public List<ReplyBean> getReplyList(PageBean pb) {
+	public List<ReplyBean> getReplyList(FindPageBean pb) {
 		return sqlSession.selectList(namespace + ".getReplyList", pb);
 	}
 

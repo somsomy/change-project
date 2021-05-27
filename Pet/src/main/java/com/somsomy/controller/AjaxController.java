@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.somsomy.service.MemberService;
 import com.somsomy.service.ReplyService;
 import com.somsomy.service.VolunteerService;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.MemberBean;
-import com.somsomy.domain.PageBean;
 import com.somsomy.domain.ReplyBean;
 
 
@@ -90,7 +90,7 @@ public class AjaxController {
 		ResponseEntity<List<ReplyBean>> entity = null;
 		int num = Integer.parseInt(request.getParameter("boardNum"));
 		
-		PageBean pb = new PageBean();
+		FindPageBean pb = new FindPageBean();
 		pb.setPageSize(15);
 		
 		if(request.getParameter("pageNum") == null) {

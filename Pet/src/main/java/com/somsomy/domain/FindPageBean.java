@@ -1,6 +1,6 @@
 package com.somsomy.domain;
 
-public class PageBean {
+public class FindPageBean {
 	private int count;
 	private int pageSize;
 	private String pageNum;
@@ -12,6 +12,9 @@ public class PageBean {
 	private int endPage;
 	private int pageCount;
 	private String search;
+	private int num;
+	private String id;
+	private String state;
 	public String getSearch() {
 		return search;
 	}
@@ -89,5 +92,24 @@ public class PageBean {
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
 	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 	
 }

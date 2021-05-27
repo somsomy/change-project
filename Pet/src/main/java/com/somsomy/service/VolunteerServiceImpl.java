@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.somsomy.dao.ReplyDAO;
 import com.somsomy.dao.VolunteerDAO;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.PageBean;
 import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
@@ -50,7 +51,7 @@ public class VolunteerServiceImpl implements VolunteerService {
 	}
 
 	@Override
-	public List<VolunteerReplyBean> getVolunteerReplyList(PageBean pb) {
+	public List<VolunteerReplyBean> getVolunteerReplyList(FindPageBean pb) {
 		pb.setCurrentPage(Integer.parseInt(pb.getPageNum()));
 		pb.setStartRow((pb.getCurrentPage()-1)*pb.getPageSize());
 		

@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.PageBean;
-import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 
@@ -45,7 +45,7 @@ public class VolunteerDAOImpl implements VolunteerDAO {
 	}
 
 	@Override
-	public List<VolunteerReplyBean> getVolunteerReplyList(PageBean pb) {
+	public List<VolunteerReplyBean> getVolunteerReplyList(FindPageBean pb) {
 		return sqlSession.selectList(namespace + ".getVolunteerReplyList", pb);
 	}
 

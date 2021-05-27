@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.MemberBean;
 import com.somsomy.domain.PageBean;
-import com.somsomy.domain.ReplyBean;
 import com.somsomy.domain.VolunteerBean;
 import com.somsomy.domain.VolunteerReplyBean;
 import com.somsomy.service.MemberService;
@@ -92,7 +92,7 @@ public class VolunteerController {
 		
 		volunteerService.updateReadcount(num);
 		
-		PageBean pb = new PageBean();
+		FindPageBean pb = new FindPageBean();
 		pb.setPageSize(15);
 		
 		if(request.getParameter("pageNum") == null) {

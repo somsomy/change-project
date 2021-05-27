@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.somsomy.domain.PageBean;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.SupporterBean;
 import com.somsomy.domain.SupporterCatsBean;
 
@@ -34,7 +34,7 @@ public class SupportDAOImpl implements SupportDAO {
 	}
 
 	@Override
-	public List<SupporterCatsBean> getMyCatsList(PageBean pb) {
+	public List<SupporterCatsBean> getMyCatsList(FindPageBean pb) {
 		
 		return sqlSession.selectList(namespace + ".getMyCatsList", pb);
 	}

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.somsomy.domain.AdoptBean;
 import com.somsomy.domain.CatsBean;
+import com.somsomy.domain.FindPageBean;
 import com.somsomy.domain.MemberBean;
 import com.somsomy.domain.PageBean;
 import com.somsomy.domain.ReviewBean;
@@ -265,4 +266,42 @@ public class BoardController {
 		
 		return "redirect:/adopt/review";
 	}
+	
+	@RequestMapping(value = "/cats", method = RequestMethod.GET)
+	public String protectedCats(HttpServletRequest request, Model model) {
+		
+		String state = request.getParameter("state");
+		
+		FindPageBean pb = new FindPageBean();
+		pb.setPageSize(9);
+		
+		if(request.getParameter("pageNum") == null) {
+			pb.setPageNum("1");
+		}else {
+			pb.setPageNum(request.getParameter("pageNum"));
+		}
+		
+		pb.setCount(catsService.getStateCatCount(state));
+		pb.setState(state);
+		
+		List<CatsBean> cbList = catsService.getStateCatList(pb);
+		
+		model.addAttribute("pb", pb);
+		model.addAttribute("cbList", cbList);
+		
+		return "adopt/cats";
+	}
+	
+	@RequestMapping(value = "/cats/content", method = RequestMethod.GET)
+	public String catsContent(HttpServletRequest request, HttpSession session, Model model) {
+		int catId = Integer.parseInt(request.getParameter("catId"));
+		
+		catsService.updateReadcount(catId);
+		CatsBean cb = catsService.findByCatId(catId);
+		
+		model.addAttribute("cb", cb);
+		
+		return "adopt/catsContent";
+	}
+	
 }
